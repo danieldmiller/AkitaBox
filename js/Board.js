@@ -45,10 +45,12 @@ class Board {
      * 2) Any live cell with two or three live neighbours lives on to the next generation (survival)
      * 3) Any live cell with more than three live neighbours dies (overcrowding)
      * 4) Any dead cell with exactly three live neighbours becomes a live cell (reproduction)
+     * 
+     * @param {Board} oldBoard - previous generation board, used for neighbor comparison without a changing board state
      */
     applyRules(oldBoard) {
-        for(i=0; i<this.cells.length; i++) {
-            for(j=0; j<this.cells[i].length; j++) {
+        for(let i=0; i<this.cells.length; i++) {
+            for(let j=0; j<this.cells[i].length; j++) {
                 const cell = this.cells[i][j];
                 const neighbors = oldBoard.getNeighbors(i, j);
 
@@ -94,8 +96,8 @@ class Board {
      */
     cloneCells() {
         const newCells = new Array(this.height).fill().map(()=>Array(this.width).fill());
-        for(i=0; i<this.height; i++) {
-            for(j=0; j<this.width; j++) {
+        for(let i=0; i<this.height; i++) {
+            for(let j=0; j<this.width; j++) {
                 newCells[i][j] = new Cell(this.cells[i][j].lifeState);
             }
         }
@@ -114,8 +116,8 @@ class Board {
     render() {
         const board = document.querySelector("#board");
 
-        for(i=0; i<this.cells.length; i++) {
-            for(j=0; j<this.cells[i].length; j++) {
+        for(let i=0; i<this.cells.length; i++) {
+            for(let j=0; j<this.cells[i].length; j++) {
                 let cell = document.querySelector("#cell" + i + "-" + j);
                 
                 if(cell != null) {

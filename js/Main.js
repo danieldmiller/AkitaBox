@@ -27,8 +27,8 @@ init();
  * either alive or dead (0 or 1)
  */
 function populateBoardInitially() {
-    for(i=0; i<board.height; i++) {
-        for(j=0; j<board.width; j++) {
+    for(let i=0; i<board.height; i++) {
+        for(let j=0; j<board.width; j++) {
             const cell = new Cell(input[i][j]);
             board.cells[i][j] = cell;
         }
