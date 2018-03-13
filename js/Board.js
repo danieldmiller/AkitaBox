@@ -1,6 +1,6 @@
 /**
- * Stores a 2d-array with the 8 neighbor locations relative to a cell
- * Column-major
+ * Stores a 2d-array with the 8 neighbor locations relative to a cell.
+ * Column-major.
  * @type {number[][]}
  */
 let neighborhood = [
@@ -19,9 +19,9 @@ let neighborhood = [
  * and evolves generations by comparing a cell's neighbors
  * and updating based on a set of rules.
  * 
- * Contains an render method to display subsequent generations in browser
+ * Contains an render method to display subsequent generations in browser.
  * 
- * Holds a 2d array of Cell objects
+ * Holds a 2d array of Cell objects.
  */
 class Board {
     /**
@@ -38,7 +38,7 @@ class Board {
     }
     
     /**
-     * Loops through cells 2d-array and kills/maintains/reproduces cells
+     * Loops through cells 2d-array and kills/maintains/reproduces cells.
      * 
      * Applies following rules on each cell:
      * 1) Any live cell with fewer than two live neighbours dies (under-population)
@@ -73,9 +73,10 @@ class Board {
 
     /**
      * Loops through neighborhood 2d-array, which stores neighbor locations relative to a cell.
-     * If cell at neighbor location is in-bounds and alive, add its position to liveNeighbors
+     * If cell at neighbor location is in-bounds and alive, add its position to liveNeighbors.
      * @param {number} row - Target cell row index
      * @param {number} col - Target cell col index
+     * @returns {number[][]} liveNeighbors - live neighbors of cell at row,col 
      */
     getNeighbors(row, col) {
         const liveNeighbors = []; //2d-array of live neighbors (y, x)
@@ -92,7 +93,7 @@ class Board {
     }
 
     /**
-     * Returns a deep copy of the current object's 2d-array cells
+     * Returns a deep copy of the current object's 2d-array cells.
      */
     cloneCells() {
         const newCells = new Array(this.height).fill().map(()=>Array(this.width).fill());
@@ -107,11 +108,11 @@ class Board {
 
     /**
      * Renders grid of cell divs in #board div, 
-     * with default class of "cell" for each cell div
+     * with default class of "cell" for each cell div.
      * 
-     * Every cell div is reset to have class of "cell"
+     * Every cell div is reset to have class of "cell".
      *  
-     * If cell is alive, corresponding div found via id is given "live" class
+     * If cell is alive, corresponding div found via id is given "live" class.
      */
     render() {
         const board = document.querySelector("#board");
