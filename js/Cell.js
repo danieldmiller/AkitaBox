@@ -1,4 +1,9 @@
 /**
+ * @fileOverview Cell.js
+ * @author Daniel Miller
+ */
+
+/**
  * Cell.js class stores the state of the cell (alive or dead - 0 or 1).
  * Contains isAlive() method to check state of cell.
  * Contains die() and live() methods to set lifeState as alive or dead.

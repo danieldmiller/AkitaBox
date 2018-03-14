@@ -1,4 +1,9 @@
 /**
+ * @fileOverview Board.js
+ * @author Daniel Miller
+ */
+
+/**
  * Stores a 2d-array with the 8 neighbor locations relative to a cell.
  * Row-major.
  * @type {number[][]}
