@@ -18,6 +18,6 @@ function getInputAs2dArray(input) {
 document.querySelector("#rpentomino").addEventListener("click", () => {
     const rpentomino = "000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000011000000\n000000110000000\n000000010000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000";
     const textArea = document.querySelector("textarea");
-    textArea.style.height = "200px";
+    textArea.style.height = "205px";
     textArea.value = rpentomino;
 });

@@ -52,6 +52,3 @@ function nextGeneration() {
     newBoard.render();
     board = newBoard;
 }
-
-
-
