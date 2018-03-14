@@ -1,6 +1,6 @@
 /**
  * Stores a 2d-array with the 8 neighbor locations relative to a cell.
- * Column-major.
+ * Row-major.
  * @type {number[][]}
  */
 let neighborhood = [
