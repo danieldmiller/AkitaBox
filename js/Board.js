@@ -92,9 +92,7 @@ class Board {
         return liveNeighbors;
     }
 
-    /**
-     * Returns a deep copy of the current object's 2d-array cells.
-     */
+    /** Returns a deep copy of the current object's 2d-array cells. */
     cloneCells() {
         const newCells = new Array(this.height).fill().map(()=>Array(this.width).fill());
         for(let i=0; i<this.height; i++) {

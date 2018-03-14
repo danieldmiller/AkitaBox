@@ -21,16 +21,12 @@ class Cell {
         return this.lifeState === 1;
     }
 
-    /**
-     * Sets cell lifeState to 0
-     */
+    /** Sets cell lifeState to 0 */
     die() {
         this.lifeState = 0;
     }
 
-    /**
-     * Sets cell lifeState to 1
-     */
+    /** Sets cell lifeState to 1 */
     live() {
         this.lifeState = 1;
     }

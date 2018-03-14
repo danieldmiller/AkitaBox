@@ -1,43 +1,42 @@
-const input = [
-    [0,1,0,0,0],
-    [1,0,0,1,1],
-    [1,1,0,0,1],
-    [0,1,0,0,0],
-    [1,0,0,0,1]
-];
-
-let board = new Board(input.length, input[0].length, null);
-
-/** 
- * Initial load of Game of Life.
- * 
- * Start by populating the board's cells 2d-array with
- * new Cell objects that are alive or dead (0 or 1) based on input
- * 
- * Renders initial generation 
- */
-function init() {
-    populateBoardInitially();
-    board.render();
-}
-init();
+let board; //Main Board object
 
 /**
- * Populates board.cells 2d-array with Cell objects that are
+ * Populates cells 2d-array with Cell objects that are
  * either alive or dead (0 or 1)
+ * 
+ * Creates and renders new board with cells 2d-array
  */
-function populateBoardInitially() {
-    for(let i=0; i<board.height; i++) {
-        for(let j=0; j<board.width; j++) {
-            const cell = new Cell(input[i][j]);
-            board.cells[i][j] = cell;
+function initializeBoard(cellArr) {
+    let cells = Array(cellArr.length).fill().map(()=>Array(cellArr[0].length).fill());
+    
+    for(let i=0; i<cellArr.length; i++) {
+        for(let j=0; j<cellArr[i].length; j++) {
+            const cell = new Cell(cellArr[i][j]);
+            cells[i][j] = cell;
         }
     }
+
+    board = new Board(cellArr.length, cellArr[0].length, cells);
+    board.render();
 }
 
 /**
- * Click listener for next button that evolves to next generation
+ * Click listener for submit button that converts textarea input to 2d number array. 
+ * Passes the 2d-array to initializeBoard()
  */
+document.querySelector("#submit").addEventListener("click", () => {
+    const input = document.querySelector("textarea").value;
+    const cellArr = getInputAs2dArray(input); //Input.js function that returns a 2d-array
+                                              //of the ints from the text area input
+
+    //hide input section and show board section
+    document.querySelector("#inputSection").style.display = "none";
+    document.querySelector("#gameSection").style.display = "inline-block";
+
+    initializeBoard(cellArr); 
+});
+
+/** Click listener for next button that evolves to next generation */
 document.querySelector("#next").addEventListener("click", () => {
     nextGeneration();
 });

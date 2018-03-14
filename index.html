@@ -1,15 +1,30 @@
 <!doctype html>
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     <body>
-        <div id="board"></div>
-        <button id="next">Next</button>
+        <div class="container">
+            <div id="inputSection">
+                <p>Enter a game board of cells. Enter a living cell as 1 and a dead cell as 0.</p>
+                <p>Enter each row without spaces between cells (0100100). Separate rows with a linebreak (enter)</p>
+                <textarea type="text"></textarea>
+
+                <span>Default Game Board Configurations:</span>
+                <button id="rpentomino" class="defaultBoard">R-Pentomino</button>
+                <button id="submit">Submit</button>
+            </div>
+            <div id="gameSection">
+                <div id="board"></div>
+                <button id="next">Next</button>
+            </div>
+        </div>
 
         <script src="js/Cell.js"></script>
         <script src="js/Board.js"></script>
         <script src="js/Main.js"></script>
+        <script src="js/Input.js"></script>
     </body>
 </html>
