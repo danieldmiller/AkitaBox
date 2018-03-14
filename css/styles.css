@@ -32,7 +32,7 @@ textarea {
 .cell {
     float: left;
     position: relative;
-    border: 1px solid white;
+    border: 1px solid #eee;
 }
     .cell.live {
         background-color: white;

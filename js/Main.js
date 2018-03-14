@@ -13,7 +13,7 @@
     document.querySelector("#submit").addEventListener("click", () => {
         const input = document.querySelector("textarea").value;
         const cellArr = getInputAs2dArray(input); //Input.js function that returns a 2d-array
-                                                //of the ints from the text area input
+                                                  //of the ints from the text area input
         if(cellArr == null) {
             alert("Invalid input. Try again.");
             return;
