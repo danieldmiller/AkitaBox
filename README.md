@@ -30,11 +30,12 @@ Subsequent generation:
 ## Files
 
 *  **index.html**  - HTML page containing a board div with cell divs. Next button evolves to the next generation.
-*  **Main.js**     - Takes game board of cells input and creates a new board with Cell objects that are either alive (1) or dead (0).
+*  **Main.js**     - Takes input from textarea and creates a new board with Cell objects that are either alive (1) or dead (0).
                      Includes functions to listen for "next" button click and evolve to next generation.
 *  **Board.js**    - Object class that holds a 2d-array of Cell objects. Includes functions to apply game rules, find neighbors 
                      of a cell, deep copy the 2d-array of Cell objects, and render the cells on the browser.
 *  **Cell.js**     - Object class that stores the state of a cell. Includes functions to die, live, and check if a cell is alive.
+*  **Input.js**     - Includes function to convert a string to a 2-dimensional number array.
 *  **styles.css**  - Stylesheet that stylizes index.html.
     
 
