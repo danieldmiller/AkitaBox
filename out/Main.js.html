@@ -26,64 +26,73 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>let board; //Main Board object
-
-/**
- * Populates cells 2d-array with Cell objects that are
- * either alive or dead (0 or 1)
- * 
- * Creates and renders new board with cells 2d-array
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileOverview Main.js
+ * @author Daniel Miller
  */
-function initializeBoard(cellArr) {
-    let cells = Array(cellArr.length).fill().map(()=>Array(cellArr[0].length).fill());
-    
-    for(let i=0; i&lt;cellArr.length; i++) {
-        for(let j=0; j&lt;cellArr[i].length; j++) {
-            const cell = new Cell(cellArr[i][j]);
-            cells[i][j] = cell;
+
+(function() {
+    let board; //Main Board object
+
+    /**
+     * Click listener for submit button that converts textarea input to 2d number array. 
+     * Passes the 2d-array to initializeBoard()
+     */
+    document.querySelector("#submit").addEventListener("click", () => {
+        const input = document.querySelector("textarea").value;
+        const cellArr = getInputAs2dArray(input); //Input.js function that returns a 2d-array
+                                                //of the ints from the text area input
+        if(cellArr == null) {
+            alert("Invalid input. Try again.");
+            return;
         }
+        //hide input section and show board section
+        document.querySelector("#inputSection").style.display = "none";
+        document.querySelector("#gameSection").style.display = "inline-block";
+
+        initializeBoard(cellArr); 
+    });
+
+    /**
+     * Populates cells 2d-array with Cell objects that are
+     * either alive or dead (0 or 1)
+     * 
+     * Creates and renders new board with cells 2d-array
+     */
+    function initializeBoard(cellArr) {
+        let cells = Array(cellArr.length).fill().map(()=>Array(cellArr[0].length).fill());
+        
+        for(let i=0; i&lt;cellArr.length; i++) {
+            for(let j=0; j&lt;cellArr[0].length; j++) {
+                const cell = new Cell(cellArr[i][j]);
+                if(cell == null) {
+                    cell = new Cell(0);
+                }
+                cells[i][j] = cell;
+            }
+        }
+
+        board = new Board(cellArr.length, cellArr[0].length, cells);
+        board.render();
     }
 
-    board = new Board(cellArr.length, cellArr[0].length, cells);
-    board.render();
-}
+    /** Click listener for next button that evolves to next generation */
+    document.querySelector("#next").addEventListener("click", () => {
+        nextGeneration();
+    });
 
-/**
- * Click listener for submit button that converts textarea input to 2d number array. 
- * Passes the 2d-array to initializeBoard()
- */
-document.querySelector("#submit").addEventListener("click", () => {
-    const input = document.querySelector("textarea").value;
-    const cellArr = getInputAs2dArray(input); //Input.js function that returns a 2d-array
-                                              //of the ints from the text area input
-
-    //hide input section and show board section
-    document.querySelector("#inputSection").style.display = "none";
-    document.querySelector("#gameSection").style.display = "inline-block";
-
-    initializeBoard(cellArr); 
-});
-
-/** Click listener for next button that evolves to next generation */
-document.querySelector("#next").addEventListener("click", () => {
-    nextGeneration();
-});
-
-/**
- * Creates a new board with a deep copy of the current board's cells 2d-array
- * Evolves to next generation by applying Game of Life rules
- * Renders new board to the div #board and sets the current board to the new board
- */
-function nextGeneration() {
-    const newBoard = new Board(board.height, board.width, board.cloneCells());
-    newBoard.applyRules(board);
-    newBoard.render();
-    board = newBoard;
-}
-
-
-
-</code></pre>
+    /**
+     * Creates a new board with a deep copy of the current board's cells 2d-array
+     * Evolves to next generation by applying Game of Life rules
+     * Renders new board to the div #board and sets the current board to the new board
+     */
+    function nextGeneration() {
+        const newBoard = new Board(board.height, board.width, board.cloneCells());
+        newBoard.applyRules(board);
+        newBoard.render();
+        board = newBoard;
+    }
+})();</code></pre>
         </article>
     </section>
 
@@ -93,13 +102,13 @@ function nextGeneration() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#initializeBoard">initializeBoard</a></li><li><a href="global.html#nextGeneration">nextGeneration</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Board.html">Board</a></li><li><a href="Cell.html">Cell</a></li></ul><h3>Global</h3><ul><li><a href="global.html#neighborhood">neighborhood</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 13 2018 20:36:37 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 13 2018 22:25:04 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>
