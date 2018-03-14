@@ -142,7 +142,6 @@ class Board {
             const clear = document.createElement("div");
             clear.classList = "clear";
             board.appendChild(clear);
-        }
-        
+        }        
     } 
 }

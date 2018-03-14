@@ -10,8 +10,11 @@ function initializeBoard(cellArr) {
     let cells = Array(cellArr.length).fill().map(()=>Array(cellArr[0].length).fill());
     
     for(let i=0; i<cellArr.length; i++) {
-        for(let j=0; j<cellArr[i].length; j++) {
+        for(let j=0; j<cellArr[0].length; j++) {
             const cell = new Cell(cellArr[i][j]);
+            if(cell == null) {
+                cell = new Cell(0);
+            }
             cells[i][j] = cell;
         }
     }
@@ -28,7 +31,10 @@ document.querySelector("#submit").addEventListener("click", () => {
     const input = document.querySelector("textarea").value;
     const cellArr = getInputAs2dArray(input); //Input.js function that returns a 2d-array
                                               //of the ints from the text area input
-
+    if(cellArr == null) {
+        alert("Invalid input. Try again.");
+        return;
+    }
     //hide input section and show board section
     document.querySelector("#inputSection").style.display = "none";
     document.querySelector("#gameSection").style.display = "inline-block";

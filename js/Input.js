@@ -9,6 +9,11 @@ function getInputAs2dArray(input) {
     for(let i=0; i<arr.length; i++) {
         let row = arr[i];
         let cells = row.split("").map(Number); //convert String[] into Number[]
+        for(let cell=0; cell<cells.length; cell++) {
+            if(isNaN(cells[cell])) {
+                return;
+            }
+        }
         result.push(cells);
     }
     return result;
